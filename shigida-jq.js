@@ -1,3 +1,5 @@
+/* CENTER */
+//function
 $.fn.center = function( options ) {
   var opts = $.extend( {}, $.fn.center.defaults, options);
   return this.each(function(){
@@ -8,12 +10,56 @@ $.fn.center = function( options ) {
     });
   });
 }
-
+//default options
 $.fn.center.defaults = {
   position:'fixed'
 }
-
+//automatic triggers
 $(window).on('load resize', function(){
   $('.fixed-center').center();
   $('.absolute-center').center({position:'absolute'});
 });
+
+/* FIX */
+//function
+$.fn.fix = function( options ) {
+  var opts = $.extend( {}, $.fn.fix.defaults, options);
+  return this.each(function(){
+    var cssopts = { position:'fixed' }
+    switch(opts.to){
+      case 'top left':
+        cssopts.top = '0';
+        cssopts.left = '0';
+        break;
+      case 'top':
+        cssopts.top = '0';
+        break;
+      case 'top right':
+        cssopts.top = '0';
+        cssopts.right = '0';
+        break;
+      case 'left':
+        cssopts.left = '0';
+        break;
+      case 'right':
+        cssopts.right = '0';
+        break;
+      case 'bottom left':
+        cssopts.bottom = '0';
+        cssopts.left = '0';
+        break;
+      case 'bottom':
+        cssopts.bottom = '0';
+        break;
+      case 'bottom right':
+        cssopts.bottom = '0';
+        cssopts.right = '0';
+        break;
+    }
+    $(this).css(cssopts);
+  });
+}
+//default options
+$.fn.fix.defaults = {
+  to:'top left'
+};
