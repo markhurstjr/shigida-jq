@@ -63,3 +63,9 @@ $.fn.fix = function( options ) {
 $.fn.fix.defaults = {
   to:'top left'
 };
+
+/* SH CLASSES */
+//sh-toggle
+$(document).on('click', '.sh-toggle', function(){
+  $($(this).attr('data-toggle')).slideToggle();
+});
