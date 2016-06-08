@@ -9,11 +9,11 @@ $.fn.center = function( options ) {
       top:$(window).height() / 2 - $(this).outerHeight(true) / 2
     });
   });
-}
+};
 //default options
 $.fn.center.defaults = {
   position:'fixed'
-}
+};
 //automatic triggers
 $(window).on('load resize', function(){
   $('.fixed-center').center();
@@ -58,7 +58,7 @@ $.fn.fix = function( options ) {
     }
     $(this).css(cssopts);
   });
-}
+};
 //default options
 $.fn.fix.defaults = {
   to:'top left'
@@ -69,3 +69,13 @@ $.fn.fix.defaults = {
 $(document).on('click', '.sh-toggle', function(){
   $($(this).attr('data-toggle')).slideToggle();
 });
+$.fn.shToggle = function(options){
+  return this.each(function(){
+    if(options === undefined || options.ele === undefined){
+      console.error('no ele option for shToggle, cannot toggle any elements');
+    }
+    else{
+      $(this).addClass('sh-toggle').attr('data-toggle', options.ele);
+    }
+  });
+};
